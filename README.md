@@ -1,5 +1,7 @@
 ﻿# NetRunners
 
+A tool for penetration testing purposes that will allow a user to enter text into forms on a website in a way that appears to be from actual keystrokes.
+
 ## How to run [Windows]
 
 1. Setup a python virtual environment
