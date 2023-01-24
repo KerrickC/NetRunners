@@ -20,7 +20,7 @@ class GUI(object):
         with Listener(on_click=self.on_click) as listener:
             listener.join()
 
-    def sendTextInput(text):
+    def sendTextInput(self, text):
         time.sleep(1)
         pyautogui.typewrite(text)
 
