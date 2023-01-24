@@ -2,15 +2,15 @@
 
 ## How to run [Windows]
 
-(1) Setup a python virtual environment
-(a) Run `pip install virtualenv`
-(b) Run `python -m venv [/dir/of/project]/NETRUNNERS/]env`
-(c) Run `[/dir/of/project]/NETRUNNERS/env/Scripts/activate`
+1. Setup a python virtual environment
+   - (a) Run `pip install virtualenv`
+   - (b) Run `python -m venv [/dir/of/project]/NETRUNNERS/]env`
+   - (c) Run `[/dir/of/project]/NETRUNNERS/env/Scripts/activate`
 
-(2) Install dependencies
-(a) Run `pip install -r ./requirements.txt`
+2. Install dependencies
+   - (a) Run `pip install -r ./requirements.txt`
 
-(3) Start program
-(a) Run `python ./src/demo.py`
+3. Start program
+   - (a) Run `python ./src/demo.py`
 
 [NOTE: to close program properly, first exit the GUI by clicking the 'X', then navigate to running terminal and type 'CTRL-C']
