@@ -4,11 +4,13 @@
 
 (1) Setup a python virtual environment
 (a) Run `pip install virtualenv`
-(b) Run `python -m venv [/dir/of/project/]`
-(c) Run `[/dir/of/venv/]/Scripts/activate`
+(b) Run `python -m venv [/dir/of/project]/NETRUNNERS/]env`
+(c) Run `[/dir/of/project]/NETRUNNERS/env/Scripts/activate`
 
 (2) Install dependencies
 (a) Run `pip install -r ./requirements.txt`
 
 (3) Start program
 (a) Run `python demo.py`
+
+[NOTE: to close program properly, first exit the GUI by clicking the 'X', then navigate to running terminal and type 'CTRL-C']
