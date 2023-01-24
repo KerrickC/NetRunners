@@ -20,12 +20,14 @@ class GUI(object):
         with Listener(on_click=self.on_click) as listener:
             listener.join()
 
-    def on_click(self, x, y, button, pressed):
-        print("Mouse clicked")
-        # startKeyboardInput()
-        self.w.config(text="Text Changed")
+    def sendTextInput(text):
         time.sleep(1)
-        pyautogui.typewrite("Hello World")
+        pyautogui.typewrite(text)
+
+    def on_click(self, x, y, button, pressed):
+        # startKeyboardInput()
+        self.w.config(text="Mouse Clicked!")
+        self.sendTextInput("texttexttext")
 
 # def main():
 root = tk.Tk()
