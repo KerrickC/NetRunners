@@ -11,6 +11,6 @@
 (a) Run `pip install -r ./requirements.txt`
 
 (3) Start program
-(a) Run `python demo.py`
+(a) Run `python ./src/demo.py`
 
 [NOTE: to close program properly, first exit the GUI by clicking the 'X', then navigate to running terminal and type 'CTRL-C']
