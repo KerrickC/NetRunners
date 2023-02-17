@@ -15,6 +15,8 @@ A tool for penetration testing purposes that will allow a user to enter text int
 3. Start program
    - (a) Run `python ./src/demo.py`
 
+[NOTE: to close program properly, first exit the GUI by clicking the 'X', then navigate to running terminal and type 'CTRL-C']
+
 ## Steps to re-run program during different session ## 
 1. Setup a python virtual environment
    - (a) Run `pip install virtualenv`
