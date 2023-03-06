@@ -1,13 +1,9 @@
 from tkinter import *
 import webview
 import threading
-#from pynput.mouse import Listener
-
 from pynput import mouse
-
 import pyautogui
 import time
-
 import webbrowser
 
 # class GUI(object):
@@ -53,9 +49,18 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtWebEngineWidgets import *
 from PyQt5.QtGui import *
 
+# TODO: create shortcuts for start monitoring and upload file
+    # [ ] - Decide on keyboard input
+    # [ ] - Create functionality for start monitoring
+    # [ ] - Create functionality for upload file
+
+# TODO: change play button to pause button when selected and create stop listener functionality
+    # [ ] - Implement icon change on mouse click
+    # [ ] - If pause button is clicked, stop listener
+
 # TODO: FIX INPUT ISSUE
-# ISSUE: text seems to only be inputted if input field is selected
-# before listener is started and then clicked again
+# ISSUE: text seems to only be inputted if input field is selected before listener is started and then clicked again
+# [X] - Added additional mouse click
 
 class GUI(QMainWindow):
     lines = ""
@@ -64,44 +69,46 @@ class GUI(QMainWindow):
         self.Browser = QWebEngineView()
         self.Browser.setUrl(QUrl('https://google.com'))
         self.setCentralWidget(self.Browser)
-        self.showMaximized()
+        self.showNormal()
         
         NavBar = QToolBar()
         self.addToolBar(NavBar)
 
+        # Select File
         pixmapi = QStyle.StandardPixmap.SP_FileDialogStart
         icon = self.style().standardIcon(pixmapi)
         SelectFile = QAction(QIcon(icon), 'Select File', self)
         SelectFile.triggered.connect(self.FileSelector)
         NavBar.addAction(SelectFile)
 
+        # Start monitoring for next mouse click
         pixmapi = QStyle.StandardPixmap.SP_MediaPlay
         icon = self.style().standardIcon(pixmapi)
         StartMonitoring = QAction(QIcon(icon),'Start Monitoring', self)
         StartMonitoring.triggered.connect(self.StartMonitor)
+
         NavBar.addAction(StartMonitoring)
 
+        # Browser back button
         pixmapi = QStyle.StandardPixmap.SP_ArrowBack
         icon = self.style().standardIcon(pixmapi)
         BackButton = QAction(QIcon(icon), 'Back', self)
         BackButton.triggered.connect(self.Browser.back)
         NavBar.addAction(BackButton)
 
+        # Browser forward button
         pixmapi = QStyle.StandardPixmap.SP_ArrowForward
         icon = self.style().standardIcon(pixmapi)
         ForwardButton = QAction(QIcon(icon), 'Forward', self)
         ForwardButton.triggered.connect(self.Browser.forward)
         NavBar.addAction(ForwardButton)
 
+        # Browser reload button
         pixmapi = QStyle.StandardPixmap.SP_BrowserReload
         icon = self.style().standardIcon(pixmapi)
         ReloadButton = QAction(QIcon(icon), 'Reload', self)
         ReloadButton.triggered.connect(self.Browser.reload)
         NavBar.addAction(ReloadButton)
-
-        HomeButton = QAction('Home', self)
-        HomeButton.triggered.connect(self.NavigateHome)
-        NavBar.addAction(HomeButton)
 
         self.UrlBar = QLineEdit()
         self.UrlBar.returnPressed.connect(self.NavigateToUrl)
@@ -123,9 +130,6 @@ class GUI(QMainWindow):
         with open(file) as f:
             self.lines = f.read()
             print(self.lines)
-            
-    def NavigateHome(self):
-        self.Browser.setUrl("http://google.com")
 
     def NavigateToUrl(self):
         Url = self.UrlBar.text()
@@ -148,13 +152,11 @@ class GUI(QMainWindow):
             pyautogui.click(x, y)
 
             pyautogui.write(self.lines)
+            
             # Stop listener           
             return False
             
     def StartMonitor(self):
-        self.setStyleSheet("background-color:red")
-        print(self)
-
         with mouse.Listener(on_click=self.on_click) as listener:
             listener.join()
 
