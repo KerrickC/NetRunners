@@ -97,10 +97,12 @@ class GUI(QMainWindow):
         icon = self.style().standardIcon(pixmapi)
         ReloadButton = QAction(QIcon(icon), 'Reload', self)
         ReloadButton.triggered.connect(self.Browser.reload)
-
         NavBar.addAction(ReloadButton)
+
         HomeButton = QAction('Home', self)
         HomeButton.triggered.connect(self.NavigateHome)
+        NavBar.addAction(HomeButton)
+
         self.UrlBar = QLineEdit()
         self.UrlBar.returnPressed.connect(self.NavigateToUrl)
 
@@ -136,12 +138,21 @@ class GUI(QMainWindow):
         mouse.Listener.stop
         if pressed:
             print ('Mouse clicked at ({0}, {1}) with {2}'.format(x, y, button))
+
+            # Maybe add another mouse click here to ensure the text box is actually being clicked
+                # Seems to be windows issue
+            
+            #print (pyautogui.position().x)
+
+            # Additional mouse click
+            pyautogui.click(x, y)
+
             pyautogui.write(self.lines)
             # Stop listener           
             return False
             
     def StartMonitor(self):
-        # self.setStyleSheet("background-color:red")
+        self.setStyleSheet("background-color:red")
         print(self)
 
         with mouse.Listener(on_click=self.on_click) as listener:
