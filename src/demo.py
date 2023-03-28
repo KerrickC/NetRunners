@@ -1,48 +1,5 @@
-from tkinter import *
-import webview
-import threading
 from pynput import mouse
 import pyautogui
-import time
-import webbrowser
-
-# class GUI(object):
-#     def __init__(self):
-#         self.a = "Please focus on a text input..."
-#         self.w = tk.Label(root, text=self.a)
-#         self.w.pack()
-#         thread2 = threading.Thread(target=self.initMouseClickController)
-#         thread2.start()
-
-#     def update(self):
-#         self.w.config(text=self.a)
-
-#     def initMouseClickController(self):
-#         with Listener(on_click=self.on_click) as listener:
-#             listener.join()
-
-#     def sendTextInput(self, text):
-#         time.sleep(1)
-#         pyautogui.typewrite(text)
-
-#     def on_click(self, x, y, button, pressed):
-#         # startKeyboardInput()
-#         self.w.config(text="Mouse Clicked!")
-#         self.sendTextInput("texttexttext")
-
-# def main():
-#root = Tk()
-# title of window
-#root.title("DEMO")
-# stick to top left
-# root.geometry("+0+0") 
-# keep window on top
-# root.wm_attributes("-topmost", True)
-# create new GUI instance
-# gui = GUI()
-
-# root.mainloop()
-  
 import sys
 from PyQt5.QtCore import *
 from PyQt5.QtWidgets import *
@@ -62,8 +19,18 @@ from PyQt5.QtGui import *
 # ISSUE: text seems to only be inputted if input field is selected before listener is started and then clicked again
 # [X] - Added additional mouse click
 
+# Quick meeting notes:
+# - rc file, store previous window size, ...
+# - create a file on the target VM (right click start monitor to bring up different options)
+# - encoding
+# - requirements.txt (>= versions)
+# - download file with QR code generator (find python generator)
+# - Use PyCharm for PEP style
+
+
 class GUI(QMainWindow):
     lines = ""
+
     def __init__(self):
         super(GUI, self).__init__()
         self.Browser = QWebEngineView()
@@ -150,7 +117,6 @@ class GUI(QMainWindow):
 
             # Additional mouse click
             pyautogui.click(x, y)
-
             pyautogui.write(self.lines)
             
             # Stop listener           
@@ -159,6 +125,7 @@ class GUI(QMainWindow):
     def StartMonitor(self):
         with mouse.Listener(on_click=self.on_click) as listener:
             listener.join()
+
 
 app = QApplication(sys.argv)
 QApplication.setApplicationName('NetRunners')
