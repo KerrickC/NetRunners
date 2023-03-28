@@ -37,7 +37,7 @@ class GUI(QMainWindow):
         self.Browser.setUrl(QUrl('https://google.com'))
         self.setCentralWidget(self.Browser)
         self.showNormal()
-        
+
         NavBar = QToolBar()
         self.addToolBar(NavBar)
 
@@ -51,44 +51,41 @@ class GUI(QMainWindow):
         # Start monitoring for next mouse click
         pixmapi = QStyle.StandardPixmap.SP_MediaPlay
         icon = self.style().standardIcon(pixmapi)
-        StartMonitoring = QAction(QIcon(icon),'Start Monitoring', self)
+        StartMonitoring = QAction(QIcon(icon), 'Start Monitoring', self)
         StartMonitoring.triggered.connect(self.StartMonitor)
-
         NavBar.addAction(StartMonitoring)
 
-        # # Browser back button
-        # pixmapi = QStyle.StandardPixmap.SP_ArrowBack
-        # icon = self.style().standardIcon(pixmapi)
-        # BackButton = QAction(QIcon(icon), 'Back', self)
-        # BackButton.triggered.connect(self.Browser.back)
-        # NavBar.addAction(BackButton)
+        # Browser back button
+        pixmapi = QStyle.StandardPixmap.SP_ArrowBack
+        icon = self.style().standardIcon(pixmapi)
+        BackButton = QAction(QIcon(icon), 'Back', self)
+        BackButton.triggered.connect(self.Browser.back)
+        NavBar.addAction(BackButton)
 
-        # # Browser forward button
-        # pixmapi = QStyle.StandardPixmap.SP_ArrowForward
-        # icon = self.style().standardIcon(pixmapi)
-        # ForwardButton = QAction(QIcon(icon), 'Forward', self)
-        # ForwardButton.triggered.connect(self.Browser.forward)
-        # NavBar.addAction(ForwardButton)
+        # Browser forward button
+        pixmapi = QStyle.StandardPixmap.SP_ArrowForward
+        icon = self.style().standardIcon(pixmapi)
+        ForwardButton = QAction(QIcon(icon), 'Forward', self)
+        ForwardButton.triggered.connect(self.Browser.forward)
+        NavBar.addAction(ForwardButton)
 
-        # # Browser reload button
-        # pixmapi = QStyle.StandardPixmap.SP_BrowserReload
-        # icon = self.style().standardIcon(pixmapi)
-        # ReloadButton = QAction(QIcon(icon), 'Reload', self)
-        # ReloadButton.triggered.connect(self.Browser.reload)
-        # NavBar.addAction(ReloadButton)
+        # Browser reload button
+        pixmapi = QStyle.StandardPixmap.SP_BrowserReload
+        icon = self.style().standardIcon(pixmapi)
+        ReloadButton = QAction(QIcon(icon), 'Reload', self)
+        ReloadButton.triggered.connect(self.Browser.reload)
+        NavBar.addAction(ReloadButton)
 
-        # self.UrlBar = QLineEdit()
-        # self.UrlBar.returnPressed.connect(self.NavigateToUrl)
+        self.UrlBar = QLineEdit()
+        self.UrlBar.returnPressed.connect(self.NavigateToUrl)
 
-        # NavBar.addWidget(self.UrlBar)
-        # self.Browser.urlChanged.connect(self.UpdateUrl)
+        NavBar.addWidget(self.UrlBar)
+        self.Browser.urlChanged.connect(self.UpdateUrl)
 
     def FileSelector(self):
         options = QFileDialog.Options()
         options |= QFileDialog.DontUseNativeDialog
-        # file, _ = QFileDialog.getOpenFileName(self, "QFileDialog.getOpenFileName()", "","All Files (*);;Python Files (*.py)", options=options)
-        # Text files only (TODO: add functionality for other files)
-        file, _ = QFileDialog.getOpenFileName(self, "QFileDialog.getOpenFileName()", "","Text Files (*.txt)", options=options)
+        file, _ = QFileDialog.getOpenFileName(self, "QFileDialog.getOpenFileName()", "", "Text Files (*.txt)", options=options)
         if file:
             print(file)
             self.ReadFile(file)
@@ -104,24 +101,17 @@ class GUI(QMainWindow):
 
     def UpdateUrl(self, p):
         self.UrlBar.setText(str(p))
-    
+
     def on_click(self, x, y, button, pressed):
         mouse.Listener.stop
         if pressed:
-            print ('Mouse clicked at ({0}, {1}) with {2}'.format(x, y, button))
+            print('Mouse clicked at ({0}, {1}) with {2}'.format(x, y, button))
 
-            # Maybe add another mouse click here to ensure the text box is actually being clicked
-                # Seems to be windows issue
-            
-            #print (pyautogui.position().x)
-
-            # Additional mouse click
-            pyautogui.click(x, y)
             pyautogui.write(self.lines)
-            
-            # Stop listener           
+
+            # Stop listener
             return False
-            
+
     def StartMonitor(self):
         with mouse.Listener(on_click=self.on_click) as listener:
             listener.join()
