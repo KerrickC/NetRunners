@@ -56,32 +56,32 @@ class GUI(QMainWindow):
 
         NavBar.addAction(StartMonitoring)
 
-        # Browser back button
-        pixmapi = QStyle.StandardPixmap.SP_ArrowBack
-        icon = self.style().standardIcon(pixmapi)
-        BackButton = QAction(QIcon(icon), 'Back', self)
-        BackButton.triggered.connect(self.Browser.back)
-        NavBar.addAction(BackButton)
+        # # Browser back button
+        # pixmapi = QStyle.StandardPixmap.SP_ArrowBack
+        # icon = self.style().standardIcon(pixmapi)
+        # BackButton = QAction(QIcon(icon), 'Back', self)
+        # BackButton.triggered.connect(self.Browser.back)
+        # NavBar.addAction(BackButton)
 
-        # Browser forward button
-        pixmapi = QStyle.StandardPixmap.SP_ArrowForward
-        icon = self.style().standardIcon(pixmapi)
-        ForwardButton = QAction(QIcon(icon), 'Forward', self)
-        ForwardButton.triggered.connect(self.Browser.forward)
-        NavBar.addAction(ForwardButton)
+        # # Browser forward button
+        # pixmapi = QStyle.StandardPixmap.SP_ArrowForward
+        # icon = self.style().standardIcon(pixmapi)
+        # ForwardButton = QAction(QIcon(icon), 'Forward', self)
+        # ForwardButton.triggered.connect(self.Browser.forward)
+        # NavBar.addAction(ForwardButton)
 
-        # Browser reload button
-        pixmapi = QStyle.StandardPixmap.SP_BrowserReload
-        icon = self.style().standardIcon(pixmapi)
-        ReloadButton = QAction(QIcon(icon), 'Reload', self)
-        ReloadButton.triggered.connect(self.Browser.reload)
-        NavBar.addAction(ReloadButton)
+        # # Browser reload button
+        # pixmapi = QStyle.StandardPixmap.SP_BrowserReload
+        # icon = self.style().standardIcon(pixmapi)
+        # ReloadButton = QAction(QIcon(icon), 'Reload', self)
+        # ReloadButton.triggered.connect(self.Browser.reload)
+        # NavBar.addAction(ReloadButton)
 
-        self.UrlBar = QLineEdit()
-        self.UrlBar.returnPressed.connect(self.NavigateToUrl)
+        # self.UrlBar = QLineEdit()
+        # self.UrlBar.returnPressed.connect(self.NavigateToUrl)
 
-        NavBar.addWidget(self.UrlBar)
-        self.Browser.urlChanged.connect(self.UpdateUrl)
+        # NavBar.addWidget(self.UrlBar)
+        # self.Browser.urlChanged.connect(self.UpdateUrl)
 
     def FileSelector(self):
         options = QFileDialog.Options()
