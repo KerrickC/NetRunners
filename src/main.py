@@ -97,16 +97,23 @@ class GUI(QMainWindow):
 
     def NavigateToUrl(self):
         Url = self.UrlBar.text()
-        self.Browser.setUrl(QUrl('https://google.com'))
+        self.Browser.setUrl(QUrl(Url))
 
     def UpdateUrl(self, p):
-        self.UrlBar.setText(str(p))
+        p = str(p).removeprefix("PyQt5.QtCore.QUrl('")
+        p = str(p).removesuffix("')")
+
+        if p == "about:blank":
+            p = "https://www.google.com/"
+            self.UrlBar.setText(str(p))
+            self.NavigateToUrl()
+        else:
+            self.UrlBar.setText(str(p))
 
     def on_click(self, x, y, button, pressed):
         mouse.Listener.stop
         if pressed:
             print('Mouse clicked at ({0}, {1}) with {2}'.format(x, y, button))
-
             pyautogui.write(self.lines)
 
             # Stop listener
