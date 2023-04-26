@@ -7,7 +7,8 @@ A tool for penetration testing purposes that will allow a user to enter text int
 1. Setup a python virtual environment
    - (a) Run `pip install virtualenv`
    - (b) Run `mkdir env`
-   - (c) Run `python -m venv [/dir/of/project/env]` (i.e. C:\NetRunners\env)
+   - (c) Run 
+            `python -m venv [/dir/of/project/env]` (i.e. C:\NetRunners\env)
    - (d) Run `cd [/dir/of/project/env/scripts] (i.e. C:\NetRunners\env\Scripts)`
    - (e) Run `activate`
 
