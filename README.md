@@ -7,20 +7,33 @@ A tool for penetration testing purposes that will allow a user to enter text int
 1. Setup a python virtual environment
    - (a) Run `pip install virtualenv`
    - (b) Run `mkdir env`
-   - (c) Run `python -m venv [/dir/of/project]/NetRunners/]env`
-   - (d) Run `[/dir/of/project]/NetRunners/env/Scripts/activate`
+   - (c) Run `python -m venv [/dir/of/project/env] (i.e. C:\NetRunners\env)`
+   - (d) Run `cd [/dir/of/project/env/scripts] (i.e. C:\NetRunners\env\Scripts)`
+   - (e) Run `activate`
 
 2. Install dependencies
-   - (a) Run `pip install -r [/dir/of/project]/NetRunners/requirements.txt`
+   - (a) Run `cd [/dir/of/project] (i.e. C:\NetRunners)`
+   - (b) Run `pip install -r requirements.txt`
 
 3. Start program
-   - (a) Run `python [/dir/of/project]/NetRunners/src/main.py`
+   - (a) Run `cd [/dir/of/project/src] (i.e. C:\NetRunners\src)`
+   - (b) Run `python main.py`
 
 
+## Steps to re-run program during different session [Windows] ## 
+1. Setup a python virtual environment
+   - (a) Run `cd [/dir/of/project/env/scripts] (i.e. C:\NetRunners\env\Scripts)`
+   - (b) Run `activate`
+
+2. Start program
+   - (a) Run `cd [/dir/of/project/src] (i.e. C:\NetRunners\src)`
+   - (b) Run `python main.py`
+   
+   
 ## How to run [Mac]
 1. Setup a python virtual environment
    - (a) Run `pip install virtualenv`
-   - (b) Run `python -m venv [/dir/of/project]/NetRunners/]env`
+   - (b) Run `python -m venv [/dir/of/project]/NetRunners/env`
    - (c) Run `source [/dir/of/project]/NetRunners/env/Scripts/activate`
 
 2. Install dependencies
@@ -28,14 +41,6 @@ A tool for penetration testing purposes that will allow a user to enter text int
 
 3. Start program
    - (a) Run `python ./src/main.py`
-
-
-## Steps to re-run program during different session [Windows] ## 
-1. Setup a python virtual environment
-   - (a) Run `[/dir/of/project]/NetRunners/env/Scripts/activate`
-
-2. Start program
-   - (a) Run `python [/dir/of/project]/NetRunners/src/main.py`
 
 
 ## Steps to re-run program during different session [Mac] ## 
